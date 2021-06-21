@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function problems()
     {
-        return $this->belongsToMany(Problem::class);
+        return $this->belongsToMany(Problem::class)->distinct();
     }
 
 }

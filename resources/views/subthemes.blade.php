@@ -7,7 +7,13 @@
             <div class="card">
                 <div class="card-body">
                     @foreach($subthemes as $subtheme)
-                        <a href="{{ route('problems', 'd', 'd') }}">{{ $subtheme->name }}</a>
+                        <a href="/problemes/{{ $theme }}/{{ $subtheme->url }}">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    {{ $subtheme->name }}
+                                </div>
+                            </div>
+                        </a>
                     @endforeach
                 </div>
             </div>

@@ -18,6 +18,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({
+         tex2jax: {
+           inlineMath: [["$","$"],["\\(","\\)"]]
+         }
+       });
+     </script>
+
+     <script>
+         function updateInput(ish){
+             document.getElementById("preview").innerHTML = ish;
+             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+         }
+     </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+
 </head>
 <body>
     <div id="app">
@@ -49,29 +67,6 @@
                                 </li>
                             @endif
                         @else
-
-                        <li class="nav-item dropdown mr-3">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Théorie
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('theories', 'mecanique') }}">
-                                    Mécanique
-                                </a>
-                                <a class="dropdown-item" href="{{ route('theories', 'physique-moleculaire') }}">
-                                    Physique moléculaire
-                                </a>
-                                <a class="dropdown-item" href="{{ route('theories', 'electricite-magnetisme') }}">
-                                    Électricité et magnétisme
-                                </a>
-                                <a class="dropdown-item" href="{{ route('theories', 'optique') }}">
-                                    Optique
-                                </a>
-                                <a class="dropdown-item" href="{{ route('theories', 'relativite-physique-atomique') }}">
-                                    Relativité et physique atomique
-                                </a>
-                        </li>
 
                         <li class="nav-item dropdown mr-3">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

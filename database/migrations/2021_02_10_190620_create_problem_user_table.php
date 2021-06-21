@@ -14,10 +14,11 @@ class CreateProblemUserTable extends Migration
     public function up()
     {
         Schema::create('problem_user', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->integer('problem_id');
-            $table->timestamps();
+            $table->integer('user_id')->unsigned();
+            $table->integer('problem_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
+            $table->text('solved')->nullable();
         });
     }
 

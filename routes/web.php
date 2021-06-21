@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/problemes/{theme}', 'SubthemesController@index')->name('subthemes');
 Route::get('/problemes/{theme}/{subtheme}', 'ProblemsController@index')->name('problems');
 Route::get('/problemes/{theme}/{subtheme}/{id}', 'ProblemController@index')->name('problem');
+Route::post('/problemes/{theme}/{subtheme}/{id}/check', 'ProblemController@check')->name('check-problem');
 
 Route::get('/theories/{name}', 'TheoriesController@index')->name('theories');
 Route::get('/theories/{name}/{id}', 'TheoryController@index')->name('theory');

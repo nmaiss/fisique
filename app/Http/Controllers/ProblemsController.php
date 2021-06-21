@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Theme;
+use App\SubTheme;
+use App\Problem;
 
 class ProblemsController extends Controller
 {
-    public function index($subtheme)
+    public function index($theme, $subtheme)
     {
-        define('subtheme', $subtheme);
-        $subthemes = Theme::firstWhere('url', $theme)->subthemes;
-        define('subthemes', $subthemes);
-        return view('problems', compact('subtheme'), compact('subthemes'));
+        $problems = SubTheme::firstWhere('url', $subtheme)->problems;
+        return view('problems', compact('problems', 'subtheme', 'theme'));
     }
 }

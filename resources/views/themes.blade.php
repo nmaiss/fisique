@@ -104,7 +104,15 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Énoncé</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control" type="text" name="description" required></textarea>
+                                <textarea onkeyup="updateInput(this.value)" id="description" class="form-control" type="text" name="description" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="preview" class="col-md-4 col-form-label text-md-right">Prévisualisation</label>
+
+                            <div class="col-md-6">
+                                <textarea id="preview" class="form-control" type="text" name="preview" required disabled></textarea>
                             </div>
                         </div>
 
@@ -113,6 +121,29 @@
 
                             <div class="col-md-6">
                                 <input id="solution" class="form-control" type="text" name="solution" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="explanation" class="col-md-4 col-form-label text-md-right">Explication</label>
+
+                            <div class="col-md-6">
+                                <textarea id="explanation" class="form-control" type="text" name="explanation" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="format" class="col-md-4 col-form-label text-md-right">Format</label>
+
+                            <div class="col-md-6 mt-2">
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="format" id="integer" value="integer">
+                                  <label class="form-check-label" for="integer">Entier</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="format" id="float" value="float">
+                                  <label class="form-check-label" for="float">Décimale</label>
+                                </div>
                             </div>
                         </div>
 

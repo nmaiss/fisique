@@ -17,7 +17,9 @@ class CreateProblemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('sub_theme_id');
             $table->text('description');
+            $table->text('explanation');
             $table->text('solution');
+            $table->text('format');
             $table->timestamps();
         });
     }

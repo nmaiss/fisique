@@ -2,17 +2,39 @@
 
 namespace App\Http\Controllers;
 use App\SubTheme;
+use App\Problem;
 
 use Illuminate\Http\Request;
 
 class ProblemController extends Controller
 {
+    public function index($theme, $subtheme, $id){
+        $problem = Problem::find($id);
+        if (auth()->user()->problems()->where('id', $id)->count() >= 1){
+            return view('problem', compact('problem', 'subtheme', 'theme', 'id'))->with('successMsg','solved');
+        }
+        else{
+            return view('problem', compact('problem', 'subtheme', 'theme', 'id'))->with('errorMsg','error');
+        }
+    }
+
     public function add(Request $req){
         SubTheme::find($req->input('theme'))->problems()
         ->create([
             'description' => $req->input('description'),
             'solution' => $req->input('solution'),
+            'explanation' => $req->input('explanation'),
+            'format' => $req->input('format'),
         ]);
         return redirect(route('themes'));
+    }
+
+    public function check($theme, $subtheme, $id, Request $req){
+        if (Problem::find($id)->solution == $req->input('solution')){
+            auth()->user()->problems()->attach($id);
+            return redirect()->back()->withSuccess('IT WORKS!');
+        }
+        return redirect()->back()->withError('IT WORKS!');
+        //return redirect(route('problem', ['theme' => $theme, 'subtheme' => $subtheme, 'id' => $id]));
     }
 }
